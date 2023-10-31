@@ -1,9 +1,11 @@
+import Header from "../components/Header";
+
 function Home() {
-  return (
-    <>
-      메인 페이지
-    </>
-  );
+	return (
+		<>
+      <Header />
+		</>
+	)
 }
 
-export default Home;
+export default Home
