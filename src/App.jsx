@@ -1,10 +1,14 @@
+import Home from "./page/Home";
+import Movie from "./page/Movie";
+
 function App() {
 
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  )
+		<>
+      <Home />
+      <Movie />
+		</>
+	);
 }
 
 export default App
