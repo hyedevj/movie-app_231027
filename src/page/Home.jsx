@@ -1,10 +1,24 @@
 import styled from "styled-components";
-import { data } from "../data/test";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import MovieItem from "../components/MovieItem";
+import { useEffect, useState } from "react";
+import { config } from "../data/constant";
 
 function Home() {
+	const [movies, setMovies] = useState([])
+
+
+	useEffect(() => {
+		// api 호출
+		// 내가 필요한 데이터를 가공해서 movies 변수에 담는다
+		fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-KR&api_key=${config.API_KEY}`)
+		.then((res) => res.json())
+			.then((data) => {
+				setMovies(data.results)
+		})
+	}, [])
+
 	return (
 		<Container>
 			<MoviePoster>
@@ -15,7 +29,7 @@ function Home() {
 					showStatus={false}
 					transitionTime={3}
 				>
-					{data.results.map((movie) => (
+					{movies.map((movie) => (
 						<MovieItem key={movie.id} movie={movie} />						
 					))}
 				</Carousel>
