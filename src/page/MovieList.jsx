@@ -23,7 +23,8 @@ function MovieList() {
       <Group>
         {movies
           .map((movie) =>
-            <Card key={movie.id} movie={movie}></Card>)
+            <Card key={movie.id} movie={movie}></Card>
+          )
         }
       </Group>
     </Container>

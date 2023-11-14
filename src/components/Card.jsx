@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Card({ movie }) {
@@ -21,19 +22,21 @@ function Card({ movie }) {
 					</SkeletonTheme>
 				</Item>
 			) : (
-				<Item>
-					<Img
-						src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-						alt="영화 포스터 사진"
-					/>
-					<Overlay>
-						<Title>{movie.origin_title}</Title>
-						<SubTitle>
-							{movie.release_date} / ⭐ {movie.vote_average}
-						</SubTitle>
-						<Description>{movie.overview}</Description>
-					</Overlay>
-				</Item>
+				<Link to={"/movie/" + movie.id}>
+					<Item>
+						<Img
+							src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+							alt="영화 포스터 사진"
+						/>
+						<Overlay>
+							<Title>{movie.origin_title}</Title>
+							<SubTitle>
+								{movie.release_date} / ⭐ {movie.vote_average}
+							</SubTitle>
+							<Description>{movie.overview}</Description>
+						</Overlay>
+					</Item>
+				</Link>
 			)}
 		</Container>
 	);
