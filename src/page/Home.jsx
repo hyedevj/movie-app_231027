@@ -8,7 +8,7 @@ import { config } from "../data/constant";
 function Home() {
 	const [movies, setMovies] = useState([])
 
-
+	
 	useEffect(() => {
 		// api 호출
 		// 내가 필요한 데이터를 가공해서 movies 변수에 담는다
@@ -17,7 +17,7 @@ function Home() {
 			.then((data) => {
 				setMovies(data.results)
 		})
-	}, [])
+	}, [])	// 최초 만들어질 때, 딱 한번 실행됨(빈 배열)
 
 	return (
 		<Container>
