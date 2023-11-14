@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { config } from "../data/constant";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Card from "../components/Card";
 
 function MovieList() {
   const [movies, setMovies] = useState([])
@@ -20,7 +21,10 @@ function MovieList() {
     <Container>
       <Title></Title>
       <Group>
-        {movies.map((movie) => <div key={movie.id}>{movie.title}</div>)}
+        {movies
+          .map((movie) =>
+            <Card key={movie.id} movie={movie}></Card>)
+        }
       </Group>
     </Container>
   );
